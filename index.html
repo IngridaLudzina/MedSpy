@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Insert</title>
+        
+        <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/nav.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/table.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/btn.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/form.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+        <link href="https://www.toptal.com/designers/subtlepatterns/patterns/geometry2.png" rel="stylesheet">
+
+        <style>
+        div.dataTables_length { padding-left: 2em;}
+        div.dataTables_length, div.dataTables_filter { padding-top: 0.55em;}
+        .effect-1, .effect-2, .effect-3{border: 0; padding: 7px 0; border-bottom: 1px solid #ccc;}
+        .effect-1 ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #4caf50; transition: 0.4s;}
+        .effect-1:focus ~ .focus-border{width: 100%; transition: 0.4s;}
+        </style>
+    </head>
+        
+    <body>
+        <div id="page-container">
+            <div id="content-wrap">
+                <div >
+                    {% block header %}
+                    {% include "app/nav_jauna_forma.html" %}
+                    {% endblock %}
+                </div>
+                          <br>
+                          <br>
+                          <br>  
+    
+                <div class="container" style="position: absolute;">
+                    <div class="row">
+                        <div class="col" style="text-align: center;">
+                            <h3 class="text-primary mt-5 mb-5 font-weight-bold text-center" > Ievadi konkurenta cenu </h3>
+                        </div>
+                    </div>
+                </div>
+                    <br>
+                    <br>
+                    <hr/>
+                <div class="col-md-8 col-md-offset-1">
+                    <div class="form-group">
+                        <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                
+                                Pakalpojuma nozare : <select class="effect-2" type="text" placeholder="Nozare" name=" nozare" required style="font-size: small;">
+                                    <option value="_none">- Nav -</option>
+                                    <option value="334">Algoloģija</option>
+                                    <option value="321">Anestēzija</option>
+                                    <option value="339">Asinsvadu ķirurģija</option>
+                                    <option value="317">Ārsta izvēle</option>
+                                    <option value="327">Dermatoloģija</option>
+                                    <option value="28">Diagnostiskie izmeklējumi</option>
+                                    <option value="324">Endokrinoloģija</option>
+                                    <option value="346">Fizioterapija un rehabilitācija</option>
+                                    <option value="325">Gastroenteroloģija un endoskopija</option>
+                                    <option value="340">Ginekoloģija</option>
+                                    <option value="322">Gultas dienas, individuālie posteņi</option> 
+                                    <option value="343">Intensīvā terapija</option>
+                                    <option value="590">Kardioloģija</option>
+                                    <option value="338">Ķirurģija</option>
+                                    <option value="316">Konsultācijas, ārstu konsīliji</option>
+                                    <option value="347">Laboratorija</option>
+                                    <option value="332">Mamoloģija</option>
+                                    <option value="348">Materiāli/med.preces</option>                             
+                                    <option value="320">Materiāla (asins, urīns u.c.) paņemšana, šuvju un brūču apstrāde</option>
+                                    <option value="319">Med.dokumentu noformēšana</option>
+                                    <option value="336">Nefroloģija</option>
+                                    <option value="337">Neiroķirurģija</option>
+                                    <option value="335">Neiroloģija</option>
+                                    <option value="318">Obligātās veselības pārbaudes</option>
+                                    <option value="344">Oftalmoloģija</option>
+                                    <option value="333">Onkoloģija</option>
+                                    <option value="330">Otorinolaringoloģija, logopēdija</option>
+                                    <option value="345">Pacientu līdzmaksājumi</option>
+                                    <option value="323">Proktoloģija</option>
+                                    <option value="328">Pulmonoloģija un alergoloģija</option>
+                                    <option value="341">Reimatoloģija</option>
+                                    <option value="349">Sejas, žokļu ķirurģija, plastiska</option>
+                                    <option value="329">Torakālā ķirurģija</option>
+                                    <option value="331">Transplantācija</option>
+                                    <option value="326">Uroloģija</option>
+                                    <option value="350">Zobārstniecība</option></select><br/>
+                                    
+                                <br/>
+                            
+                                Pakalpojuma kods : <input class="effect-1" type="text" placeholder="PSKUS pakalpojuma kods" name="pakalpojuma_kods" required style="font-size: small;" size="60" placeholder="" required="required" aria-required="true"/><br/>
+                                <br/>
+                                Pakalpojuma nosaukums : <input class="effect-1" type="text" placeholder="PSKUS pakalpojuma nosaukums" name="pakalpojuma_nosaukums" required style="font-size: small;"size="60" placeholder="" required="required" aria-required="true"/><br/>
+                                <br/>
+                                Konkurenta nosaukums : <select class="effect-2" type="text" placeholder="Nozare" name=" nozare" required style="font-size: small;">
+                                    <option value="_none">- Nav -</option>
+                                    <option value="345">Adenta</option>
+                                    <option value="336">Aiwaclinic</option>
+                                    <option value="337">Aizkraukles medicīnas centrs</option>
+                                    <option value="335">Alūksnes slimnīca</option>
+                                    <option value="354">Apollonia Zobārstniecība</option>
+                                    <option value="318">ARS</option>
+                                    <option value="344">Aviamed</option>
+                                    <option value="333">Ādažu slimnīca</option>
+                                    <option value="330">ĀKDC</option>
+                                    <option value="323">Barokamera.net</option>
+                                    <option value="319">Bauskas slimnīca</option>
+                                    <option value="328">BKUS</option>
+                                    <option value="341">Capital Clinic Riga</option>
+                                    <option value="349">Centrālā laboratorija</option>
+                                    <option value="340">Consilium Medicum</option>
+                                    <option value="329">Daugavpils reģionālā slimnīca</option>
+                                    <option value="331">DentalArt</option>
+                                    <option value="353">Dr. Julijas katkevičas zobārstniecības prakse</option>
+                                    <option value="326">Dr.Purviņas privātklīnika</option>
+                                    <option value="352">Eduards Vende</option>
+                                    <option value="348">GK Neiroklinika</option>
+                                    <option value="321">Gulbja laboratorija</option>
+                                    <option value="322">IeM Poliklinika</option>
+                                    <option value="351">Jelgavas pilsētas slimnīca</option>
+                                    <option value="317">Jelgavas poliklīnika</option>
+                                    <option value="339">Jēkabpils reģionālā slimnīca</option>
+                                    <option value="327">JK dent</option>
+                                    <option value="28">Jūrmalas slimnīca</option>
+                                    <option value="324">Kauguru veselības centrs</option>
+                                    <option value="346">KlinikaLuc (Latgales uroloģijas centrs)</option>
+                                    <option value="325">Klīnika Headline</option>
+                                    <option value="343">Kuldīgas slimnīca</option>
+                                    <option value="320">Liepa Medicīnas centrs</option>
+                                    <option value="590">Liepājas reģionālā slimnīca </option>
+                                    <option value="342">LJMC</option>
+                                    <option value="338">LOR klīnika</option>
+                                    <option value="316">Ludzas medicīnas centrs</option>
+                                    <option value="356">Ludzas slimnīca</option>
+                                    <option value="347">Medical group Dens</option>
+                                    <option value="355">MFD</option>
+                                    <option value="332">Mikroķirurģijas centrs</option>
+                                    <option value="350">NMS</option>
+                                    <option value="350">Nordent klīnika</option>
+                                    <option value="350">Ogres slimnīca</option>
+                                    <option value="350">Premium medical </option>
+                                    <option value="350">RAKUS</option>
+                                    <option value="350">Rēzeknes slimnīca</option>
+                                    <option value="350">Rīgas 1. slimnīca </option>
+                                    <option value="350">Rīgas veselības centrs</option>
+                                    <option value="350">Smaida līnija</option>
+                                    <option value="350">Stomakoss ST centrs</option>
+                                    <option value="350">Surdovest</option>
+                                    <option value="350">Svenata</option>
+                                    <option value="350">Talsu veselības centrs</option>
+                                    <option value="350">VC4</option>
+                                    <option value="350">VCA</option>
+                                    <option value="350">Vidzemes slimnīca</option>
+                                    <option value="350">Zemgales mutes veselības centrs</option>
+                                    <option value="350">Zemgales veselības centrs</option>
+                                    <option value="350">Ziemeļkurzemes reģionālā slimnīca</option>
+                                    <option value="350">Zobārstniecība Pērle</option>
+
+                                </select><br/>
+                                <br/>
+                                Spēkā no šī datuma: <input type="date" placeholder="start Date" name="speka_no" required style="font-size: small;"/><br/>
+                                <br/>
+                                Pakalpojum cena, EUR: <input class="effect-1" type="number" step="0.01" placeholder="Cena, EUR" name="cena" required style="font-size: small;" value="" size="60" placeholder="" required="required" aria-required="true"/><br/>
+
+                                <br/>
+                                <button type="submit" class="btn-solid-lg page-scroll" value="Save"> Saglabāt</button>
+
+                                {% if messages %}
+                                {% for message in messages %}
+                                <h2 style="color:green;">  {{message}} </h2>
+                                {% endfor  %}
+                                {% endif  %}
+
+                        </form>
+                    </div>
+                    <footer id="footer">
+                          {% block footer %}
+                          {% include "app/footer.html" %}
+                          {% endblock %} 
+                    </footer>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+                <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script
+                <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+                <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"lv\/","currentPath":"node\/add\/price","currentPathIsAdmin":true,"isFront":false,"currentLanguage":"lv"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"colorbox\/plain,colorbox_inline\/colorbox_inline,core\/drupal.active-link,core\/drupal.collapse,core\/normalize,node\/drupal.node,seven\/classy.messages,seven\/global-styling,seven\/node-form,toolbar\/toolbar,toolbar\/toolbar.escapeAdmin,toolbar_menu\/icons,user\/drupal.user.icons","theme":"seven","theme_token":"fgTDLJapNbDgGH616mCREeqUPS5MGtOBNN7H44AHRwg"},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Aizv\u0113rt","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":false,"mobiledevicewidth":"480px"},"toolbar":{"breakpoints":{"toolbar.narrow":"only screen and (min-width: 16.5em)","toolbar.standard":"only screen and (min-width: 38.125em)","toolbar.wide":"only screen and (min-width: 61em)"}},"user":{"uid":"190","permissionsHash":"ecaac8343d1faadc4887f3240b145ed6a36b7dc305ecc25e439e0dc7274b79a3"}}</script>
+                <script src="/sites/default/files/js/js_S_qmaxCiyJPFzwO4jWKSUnkkQWu0_ptE3GJ8qUwE4FQ.js"></script>
+        </div>
+        
+    </body>
+</html>
+

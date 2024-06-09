@@ -1,0 +1,111 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit" />
+      
+      <title>Tirgus</title>
+
+      <link href="{% static 'app/css/table.css' %}" rel="stylesheet">
+      <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet">
+      <link href="{% static 'app/css/nav.css' %}" rel="stylesheet">
+      <link href="{% static 'app/css/btn.css' %}" rel="stylesheet">
+      <link href="{% static 'app/css/form.css' %}" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+      <style>
+        #page-container {position: relative;min-height: 100vh;}
+        #content-wrap {padding-bottom: 2.5rem;}  /* Footer height */
+        #footer {position: absolute;bottom: 0;width: 100%;height: 2.5rem;} /* Footer height */
+    </style>
+  </head>
+  <body>
+    <div id="page-container">
+        <div id="content-wrap">
+            <div >
+                {% block header %}
+                {% include "app/nav_jauna_forma.html" %}
+                {% endblock %}
+            </div>
+                    <br>
+                    <br>
+                    <br>    
+            <div class="col" style="float:right;">
+              <button type="submit" class="btn-solid-lg page-scroll " onclick="myFunction5()"> Pievienot jaunu konkurenta cenu </button>
+            </div>
+            <div class="container" style="position: absolute;">
+              <div class="row">
+                  <div class="col">
+                    <h2 class="text-primary mt-3 mb-3 font-weight-bold text-center"> Aktuālās konkurentu cenas</h2>
+                  </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <table id="table1" class="cell-border hover" style="width:100%">
+              <thead class="h6">
+                <tr style="font-size:small">
+                  <th>Pakalpojuma nozare</th>
+                  <th>Pakalpojuma kods</th>
+                  <th>Pakalpojuma nosaukums</th>
+                  <th>Konkurenta nosaukums</th>
+                  <th>Cena, EUR</th>
+                  <th>Labot ierakstu</th>
+                  <th>Dzēst ierakstu</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for p in konkurentu_cenas  %}    
+                <tr style="font-size:small;">
+                  <td>{{p.nozare}}</td>
+                  <td>{{p.pakalpojuma_kods}}</td>
+                  <td>{{p.pakalpojuma_nosaukums}}</td>
+                  <td>{{p.konkurents_nosaukums}}</td>
+                  <td>{{p.cena}}</td>
+                  <td><a href="{% url 'edit' p.gad_id %}">Labot</a></td>
+                  <td><a href="delete/{{ p.gad_id }}/">Dzēst</a></td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>
+
+          </div>
+          <footer id="footer">
+            {% block footer %}
+            {% include "app/footer.html" %}
+            {% endblock %} 
+          </footer>   
+
+            <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+            <script src="https://cdn.datatables.net/plug-ins/1.10.15/api/row().show().js"></script>
+            <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js"></script>
+            <script>
+                $(document).ready(function () {
+                  const dataTable = $('#table1').DataTable({
+                      "pageLength": 10,
+                      scrollY: 350,
+                      "processing": true,
+                      "deferRender": true,
+                      "language": {
+                      "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Latvian.json"
+                      }
+          
+                });
+              })
+              </script>
+              <script>
+                function myFunction5() {
+                location.replace("{% url 'insert' %}")
+                }
+              </script>
+    </div>
+  </body>
+</html>

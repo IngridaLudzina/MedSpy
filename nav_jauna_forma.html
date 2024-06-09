@@ -1,0 +1,38 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<style>
+body {margin: 20px;}
+ul {position:sticky; top: 0; width: 100%; list-style-type: none;  margin: 0;  padding: 0;  overflow: visible;  background-color: rgb(134, 237, 245); border-radius: 30px;}
+ul#menu li {float: inline-start; border-right: 1px solid #bbb; display:inline;}
+li a { display: block;  color: rgb(20, 19, 19);  text-align: center;  padding: 14px 16px;  text-decoration: none;}
+/* Change the link color to #111 (black) on hover */
+li a:hover {  background-color: rgb(149, 242, 245);}
+.active {  background-color: #5e8df3;}
+.nav-item{color: black; font-weight: 600; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+.navbar {  overflow: scroll; background-color: rgb(253, 254, 254);  position: fixed;  top: 0;  width: 100%;}
+.navbar a {  float: left;  display: block; color: #96979b;  text-align: center;  padding: 14px 16px;  text-decoration: none; font-size: 17px;}
+.navbar a:hover {  background: #ddd;  color: black;}
+.main {  padding: 10px;  margin-top: 15px; height: 920px; /* Used in this example to enable scrolling */}
+
+</style>
+</head>
+<nav class="navbar">
+        <ul>
+          <li class="nav-item"><a class="nav-link" href="{% url 'sakums' %}"> <i class="fas fa-shopping-cart"></i> Vispārīga informācija</a></li>
+          <li class="nav-item "><a class="nav-link" href="{% url 'izmaksu_detalizacija' %}">  <i class="fas fa-shopping-cart"></i>Pakalpojumu detalizācija </a> </li>
+          <li class="nav-item "><a class="nav-link" href="{% url 'tirgus' %}">  <i class="fas fa-shopping-cart"></i>Tirgus izpēte </a>  </li>
+          <li class="nav-item "><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-shopping-cart"></i>Ienākt </a> </li>
+          <li class="nav-item "><a class="nav-link" href="{% url 'logout' %}"> <i class="fas fa-shopping-cart"></i>Iziet </a> </li>
+        </ul>
+  </nav>
+  <div class="spot"></div>
+  <script>
+    // element references
+const navbar = document.querySelector(".navbar");
+const spot = document.querySelector(".spot");
+
+// initialize and start the observer.
+const observer = new IntersectionObserver(handleScroll, options);
+observer.observe(spot);
+  </script>

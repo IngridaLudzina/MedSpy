@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <meta name="MobileOptimized" content="width" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="format-detection" content="telephone=no" />
+
+        <title>MedSpy</title>
+        
+        <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/nav.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/btn.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/form.css' %}" rel="stylesheet">
+        <link href="{% static 'app/css/table.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <style>
+            #page-container {position: relative;min-height: 100vh;}
+            #content-wrap {padding-bottom: 2.5rem;}  /* Footer height */
+            #footer {position: absolute;bottom: 0;width: 100%;height: 2.5rem;} /* Footer height */
+    </style>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_qGLK8VzGT2YWFHps8d74qs9J0f2OM6yK15HYwiaYLsU.css" />
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_FTJuFV4MahS87R8q6n4QKXIYyWuIMD6cIH1XWjhXv9I.css" />
+    <link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i&amp;subset=latin-ext,cyrillic" />
+    <link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" />
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_kcCZHFrA30SNQLkuIYWLNTVASz-w0LPtIEdZj6CPzkE.css" />
+    <link rel="stylesheet" media="print" href="/sites/default/files/css/css_r9Vv2t2rHZzc2y99dzgINzIluQXndXeeVHywmgAVAIo.css" />
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_SEIySbHAsGwdXjt3EfajhKZKNEyzt5PSc_8i2pywmsU.css" />
+    </head>
+ 
+    <body>
+        <div id="page-container">
+            <div id="content-wrap">
+                <div >
+                    {% block header %}
+                    {% include "app/nav_jauna_forma.html" %}
+                    {% endblock %}
+                </div>
+                <div >
+                        <br>
+                        <br>                  
+                        <br>    
+                        <h2 style="text-align:center"> Esi sveicināts maksas pakapojumu lapā! </h2>
+
+                        <ul style="background-color:white">
+                            <li"> 
+                                <h4 class="tm-block-title" class="blocktext" style="text-align: center;">Maksas pakalpojumu cenrādis</h4>
+                                <p style="color: blue; text-align: justify;"><i>Šeit var apskatīt visus maksas pakalpojumu cenrādī, uz šo brīdi, iekļautos maksas pakalpojumus.</i> <br>
+                                    Pakalpojumus iespējams meklēt pēc jebkura no sarakstā redzamajiem parametriem<br>
+                                    - spēkā stāšanās datuma, manipulācijas koda, manipulācijas nosaukuma, cenas, vai pakalpojuma nozares.
+                                </p>
+                                <button type="submit" class="btn-solid-lg page-scroll " onclick="myFunction1()" class="displayed"> Spēkā esošie maksas pakalpojumi </button>
+                                <hr>
+                            </li>
+                            <li>
+                                <h4 class="tm-block-title" class="blocktext" style="text-align: center;">Valsts pakalpojumi = Maksas pakalpojumi</h4>
+                                <p style="color: blue; text-align: justify;"><i>Šeit var apskatīt maksas pakalpojumu kodiem atbilstošos valsts pakapojumu kodus.</i> <br>
+                                    Pakalpojumus iespējams meklēt pēc jebkura no sarakstā redzamajiem parametriem<br>
+                                    - maksas pakalpojuma koda, maksas pakalpojuma nosaukuma, valsts manipulācijas koda, valsts manipulācijas nosaukuma vai pakalpojuma nozares.
+                                </p>
+                                <button type="submit" class="btn-solid-lg page-scroll" onclick="myFunction2()"> Maksas vs Valsts - pārkodēšanas tabula </button>
+                                <hr>
+                            </li>
+                            <li>
+                                <h4 class="tm-block-title" class="blocktext" style="text-align: center;">Jaunākie grozījumi maksas pakalpojumu sarakstā</h4>   
+                                <p style="color: blue; text-align: justify;"><i>Šeit var apskatīt pēdējās veiktās izmaiņas maksas pakalpojum sarakstā.</i> <br>
+                                    Pakalpojumus iespējams meklēt pēc jebkura no sarakstā redzamajiem parametriem<br>
+                                </p>
+                                <button type="submit" class="btn-solid-lg page-scroll" onclick="myFunction4()"> Grozījumi</button>
+                                <hr>
+                            </li>
+                            <li>
+                                <h4 class="tm-block-title" class="blocktext" style="text-align: center;">Valsts pakalpojumi</h4>
+                                <p style="color: blue; text-align: justify;"><i>Šeit var apskatīt valsts pakalpojumus sadalījumā pa tarifa elementiem.</i> <br>
+                                    Pakalpojumus iespējams meklēt pēc jebkura no sarakstā redzamajiem parametriem<br>
+                                    Aktuālais pakalpojuma datums redzams pēc kollonas "spēkā no".
+                                </p>
+                                <button type="submit" class="btn-solid-lg page-scroll" onclick="myFunction3()"> Valsts pakalpojumi </button>  
+                                <hr>
+                            </li>
+                            
+                        </ul>
+                </div>         
+            </div> 
+            <footer id="footer">
+                                {% block footer %}
+                                {% include "app/footer.html" %}
+                                {% endblock %} 
+            </footer>   
+            
+                    <script>
+                    function myFunction1() {
+                    location.replace("list/")
+                    }
+                    function myFunction2() {
+                    location.replace("mapping_tabula/")
+                    }
+                    function myFunction3() {
+                    location.replace("list/")
+                    }
+                    function myFunction4() {
+                    location.replace("list_jauni/")
+                    }
+                    </script>
+                    <script src="{% static 'app/js/moment.min.js' %}"></script>
+                    <script src="{% static 'app/js/tooplate-scripts.js' %}"></script>
+                    <script src="{% static 'app/js/jquery-3.3.1.min.js' %}"></script>
+                    <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+                    <script src="{% static 'app/js/jquery.min.js' %}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+                    <script src="{% static 'app/js/jquery.easing.min.js' %}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+                    <script src="{% static 'app/js/validator.min.js' %}"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+                    <script src="{% static 'app/js/scripts.js' %}"></script> <!-- Custom scripts -->
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46736087-2"></script>
+                    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag("js", new Date());gtag("config", "UA-46736087-2", {"groups":"default","anonymize_ip":true,"allow_ad_personalization_signals":false});</script>
+                   <!--  <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+                    <script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>-->
+        </div>
+    </body>
+
+</html>

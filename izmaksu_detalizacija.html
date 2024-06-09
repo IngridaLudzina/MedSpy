@@ -1,0 +1,121 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    
+    <title>Visi pakalpojumi</title>
+
+
+    <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'app/css/nav.css' %}" rel="stylesheet">
+    <link href="{% static 'app/css/table.css' %}" rel="stylesheet">
+    <link href="{% static 'app/css/btn.css' %}" rel="stylesheet">
+    <link href="{% static 'app/css/form.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    
+    <style>
+      div.dataTables_length { padding-left: 2em;}
+      div.dataTables_length, div.dataTables_filter { padding-top: 0.55em;}
+      #page-container {position: relative;min-height: 100vh;}
+      #content-wrap {padding-bottom: 2.5rem;}  /* Footer height */
+      #footer {position: absolute;bottom: 0;width: 100%;height: 2.5rem;} /* Footer height */
+    </style>
+  </head>
+  
+  <body>
+    <div id="page-container">
+      <div id="content-wrap">
+          <div >
+              {% block header %}
+              {% include "app/nav_jauna_forma.html" %}
+              {% endblock %}
+          </div>
+                  <br>
+                  <br>
+                  <br>   
+          <div class="col" style="float:right;">
+            <button type="submit" class="btn-solid-lg page-scroll " onclick="myFunction6()"> Apskati visu informāciju par izvēlēto pakalpojumu </button>
+          </div>
+          <div class="container" style="position: absolute;">
+            <div class="row">
+              <div class="col">
+                <h3 class="text-primary mt-5 mb-5 font-weight-bold" > Visu, spēkā esošo, maksas pakalpojumu saraksts </h3>
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <hr/>
+          <table id="table1" class="cell-border hover" style="width:100%">
+              <thead class="h6">
+                <tr style="font-size:small">
+                    <th>Spēkā no šī datuma</th>
+                    <th>Manipulācijas kods</th>
+                    <th>Manipulācijas nosaukums</th>
+                    <th>Darba samaksa, EUR</th>
+                    <th>Ārstniecības lidzekļi, EUR</th>
+                    <th>Ēdināšanas izdevumi, EUR</th>
+                    <th>Saimnieciskie izdevumi, EUR</th>
+                    <th>Administartīvie izdevumi, EUR</th>
+                    <th>Amortizācijas, EUR</th>
+                    <th>Cena, EUR</th>
+                    <th>Pakalpojuma nozare</th>
+                </tr>
+              </thead>
+              <tbody class="p-small">
+                {% for p in izmaksu_detalizacija %}
+                <tr style="font-size:small;">
+                    <td>{{p.periods_no|date:'d.m.Y'}}</td>
+                    <td>{{p.manip_kods}}</td>
+                    <td>{{p.manip_nosaukums}}</td>
+                    <td>{{p.darba_samaksa}}</td>
+                    <td>{{p.arstn_lidzekli}}</td>
+                    <td>{{p.izd_pac_edin}}</td>
+                    <td>{{p.saimn_izmaksas}}</td>
+                    <td>{{p.admin_izd}}</td>
+                    <td>{{p.amortiz}}</td>
+                    <td>{{p.tarifs_euro}}</td>
+                    <td>{{p.nozare}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <footer id="footer">
+            {% block footer %}
+            {% include "app/footer.html" %}
+            {% endblock %} 
+          </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+      <script src= "https://code.jquery.com/jquery-3.5.1.js" ></script>
+      <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    
+      <script>
+          $(document).ready(function () {
+              $('#table1').DataTable({
+                "pageLength": 10,
+                scrollY: 350,
+                "processing": true,
+                "deferRender": true,
+                "language": {
+              "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Latvian.json"
+          }
+          });
+        })
+
+      </script>
+      <script>
+        function myFunction6() {
+        location.replace("{% url 'pakalpojuma_kartites' %}")
+        }
+      </script>
+    </div>
+  </body>
+</html>

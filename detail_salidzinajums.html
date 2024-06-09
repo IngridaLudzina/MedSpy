@@ -1,0 +1,50 @@
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+                <head>
+                    <title>Salidzinajums</title>
+                    
+                    <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet">
+                    <link href="{% static 'app/css/nav.css' %}" rel="stylesheet">
+                    <link href="{% static 'app/css/table.css' %}" rel="stylesheet">
+                    <link href="{% static 'app/css/btn.css' %}" rel="stylesheet">
+                    <link href="{% static 'app/css/form.css' %}" rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600" rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+                    <link href="https://www.toptal.com/designers/subtlepatterns/patterns/geometry2.png" rel="stylesheet">
+
+                    <style>
+                    div.dataTables_length { padding-left: 2em;}
+                    div.dataTables_length, div.dataTables_filter { padding-top: 0.55em;}
+                    .effect-1, .effect-2, .effect-3{border: 0; padding: 7px 0; border-bottom: 1px solid #ccc;}
+                    .effect-1 ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #4caf50; transition: 0.4s;}
+                    .effect-1:focus ~ .focus-border{width: 100%; transition: 0.4s;}
+                    </style>
+                </head>
+                <body>
+            <div class="container">
+                <!-- Display attributes of instance -->
+                <ul>
+                    <li>ID: {{ cenu_salidzinajums.pakalpojuma_id }}</li>
+                    <li>Spēkā no: {{cenu_salidzinajums.pskus_cena }}</li>
+                    <li>Spēkā līdz: {{cenu_salidzinajums.valsts_cena}}</li>
+                    <li>Pakalojums kods: {{cenu_salidzinajums.tirgus_vid_cena}}</li>
+                </ul>
+            </div>
+
+            {% endblock %}
+            <footer id="footer">
+                {% block footer %}
+                {% include "app/footer.html" %}
+                {% endblock %} 
+            </footer>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+            <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"lv\/","currentPath":"node\/add\/price","currentPathIsAdmin":true,"isFront":false,"currentLanguage":"lv"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"colorbox\/plain,colorbox_inline\/colorbox_inline,core\/drupal.active-link,core\/drupal.collapse,core\/normalize,node\/drupal.node,seven\/classy.messages,seven\/global-styling,seven\/node-form,toolbar\/toolbar,toolbar\/toolbar.escapeAdmin,toolbar_menu\/icons,user\/drupal.user.icons","theme":"seven","theme_token":"fgTDLJapNbDgGH616mCREeqUPS5MGtOBNN7H44AHRwg"},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Aizv\u0113rt","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":false,"mobiledevicewidth":"480px"},"toolbar":{"breakpoints":{"toolbar.narrow":"only screen and (min-width: 16.5em)","toolbar.standard":"only screen and (min-width: 38.125em)","toolbar.wide":"only screen and (min-width: 61em)"}},"user":{"uid":"190","permissionsHash":"ecaac8343d1faadc4887f3240b145ed6a36b7dc305ecc25e439e0dc7274b79a3"}}</script>
+            <script src="/sites/default/files/js/js_S_qmaxCiyJPFzwO4jWKSUnkkQWu0_ptE3GJ8qUwE4FQ.js"></script>
+    </body>
+</html>

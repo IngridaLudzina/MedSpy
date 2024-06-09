@@ -1,0 +1,56 @@
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Maksas pkalpojumu lapa</title>
+  
+  <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/nav.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/btn.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/form.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/table.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <style>
+      div.dataTables_length { padding-left: 2em;}
+      div.dataTables_length, div.dataTables_filter { padding-top: 0.55em;}
+      body {background-image: url("../images/1.jpg");font-family: 'Open Sans', sans-serif;}
+      .login { width: 400px; margin: 16px auto; font-size: 16px; border-radius: 30%;}
+      /* Reset top and bottom margins from certain elements */
+      .login-header,.login p { margin-top: 0; margin-bottom: 0;}
+      /* The triangle form is achieved by a CSS hack */
+      .login-triangle {  width: 0;  margin-right: auto;  margin-left: auto;  border: 12px solid transparent;  border-bottom-color: rgb(73, 227, 238); border-radius: 30%;}
+      .login-header {  background: rgb(39, 207, 233);  padding: 20px; font-size: 1.4em;  font-weight: normal;  text-align: center;  text-transform: uppercase; color: #fff; border-radius: 30%;}
+      .login-container {  background: #ebebeb;  padding: 12px;}
+      /* Every row inside .login-container is defined with p tags */
+      .login p {  padding: 12px;}
+      .login input {  box-sizing: border-box;  display: block;  width: 100%;  border-width: 1px;  border-style: solid;  padding: 16px;  outline: 0;  font-family: inherit;  font-size: 0.95em; border-radius: 30%;}
+      .login input[type="email"],
+      .login input[type="password"] {  background: #fff;  border-color: #bbb;  color: #555;}
+      /* Text fields' focus effect */
+      .login input[type="email"]:focus,.login input[type="password"]:focus {  border-color: #888;}
+      .login input[type="submit"] {  background: rgb(49, 207, 231);  border-color: transparent;  color: #fff;  cursor: pointer;}
+      .login input[type="submit"]:hover {   background: rgb(38, 181, 233); }
+      /* Buttons' focus effect */
+      .login input[type="submit"]:focus {  border-color: rgb(5, 59, 112); }
+  </style>
+</head>
+{% block header %}
+{% include "app/nav_jauna_forma.html" %}
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login">
+  <div class="login-triangle"></div>
+  
+  <h2 class="login-header">Log in</h2>
+
+  <form method="POST" class="login-container">
+  {% csrf_token %}
+  {{form.as_p}}
+      <button class="btn-solid-lg page-scroll" type="submit">Login</button>
+  </form>
+</div>
+{% endblock %}
